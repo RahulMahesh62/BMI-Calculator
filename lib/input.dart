@@ -17,52 +17,41 @@ class _InputPageState extends State<InputPage> {
             child: Row(
               children: <Widget>[
                 Expanded(
-                  child: Container(
-                    margin: EdgeInsets.all(15.0),
-                    decoration: BoxDecoration(
-                    color: Color(0xff10ac84),
-                    borderRadius: BorderRadius.circular(10.0)),
-        ),
+                  child: InputPageCard(colour: Color(0xff10ac84),),
           ),
                 Expanded(
-                  child: Container(
-                    margin: EdgeInsets.all(15.0),
-                    decoration: BoxDecoration(
-                    color: Color(0xff10ac84),
-                    borderRadius: BorderRadius.circular(10.0)),
-        ),
+                  child: InputPageCard(colour: Color(0xff10ac84),),
           ),
               ],),),
           Expanded(
-            child: Container(
-                    margin: EdgeInsets.all(15.0),
-                    decoration: BoxDecoration(
-                    color: Color(0xff10ac84),
-                    borderRadius: BorderRadius.circular(10.0)),
-        ),
+            child: InputPageCard(colour: Color(0xff10ac84),),
           ),
           Expanded(
             child: Row(
               children: <Widget>[
                 Expanded(
-                  child: Container(
-                    margin: EdgeInsets.all(15.0),
-                    decoration: BoxDecoration(
-                    color: Color(0xff10ac84),
-                    borderRadius: BorderRadius.circular(10.0)),
-        ),
+                  child: InputPageCard(colour: Color(0xff10ac84),),
           ),
                 Expanded(
-                  child: Container(
-                    margin: EdgeInsets.all(15.0),
-                    decoration: BoxDecoration(
-                    color: Color(0xff10ac84),
-                    borderRadius: BorderRadius.circular(10.0)),
-        ),
+                  child: InputPageCard(colour: Color(0xff10ac84),),
           ),
               ],),),
         ],)
     );
+  }
+}
+
+class InputPageCard extends StatelessWidget {
+  InputPageCard({@required this.colour});
+  final Color colour;
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.all(15.0),
+      decoration: BoxDecoration(
+      color: colour,
+      borderRadius: BorderRadius.circular(10.0)),
+        );
   }
 }
 
