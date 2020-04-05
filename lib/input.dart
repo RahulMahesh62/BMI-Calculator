@@ -6,6 +6,8 @@ const activeContainerClr=Color(0xff10ac84);
 const inactiveContainerClr=Color(0xff218c74);
 const bottomContainerClr = Color(0xffb71540);
 
+enum IconGender{male,female,}
+
 class InputPage extends StatefulWidget {
   @override
   _InputPageState createState() => _InputPageState();
@@ -13,29 +15,10 @@ class InputPage extends StatefulWidget {
 
 class _InputPageState extends State<InputPage> {
 
-  Color maleCardColor = inactiveContainerClr;
+  Color maleCardColor = inactiveContainerClr; 
   Color femaleCardClr = inactiveContainerClr;
 
-  void updateClr(int gender){
-    if(gender==1){
-      if(maleCardColor==inactiveContainerClr){
-        maleCardColor=activeContainerClr;
-        femaleCardClr=inactiveContainerClr;
-      } 
-      else{
-        maleCardColor=inactiveContainerClr;
-      }
-    }
-    else if(gender==2){
-      if(femaleCardClr==inactiveContainerClr){
-        femaleCardClr=activeContainerClr;
-        maleCardColor=inactiveContainerClr;
-      } 
-      else{
-        femaleCardClr=inactiveContainerClr;
-      }
-    }
-  }
+  IconGender selectedGender;
 
   @override
   Widget build(BuildContext context) {
@@ -49,32 +32,28 @@ class _InputPageState extends State<InputPage> {
             child: Row(
               children: <Widget>[
                 Expanded(
-                  child: GestureDetector(
-                    onTap: (){
-                      setState(() {
-                        updateClr(1);
-                      });
-                    },
                       child: InputPageCard(
-                      colour: inactiveContainerClr,
+                        onPress: (){
+                          setState(() {
+                            selectedGender = IconGender.male;
+                          });
+                        },
+                      colour: selectedGender == IconGender.male ? activeContainerClr : inactiveContainerClr,
                       cardChild: IconContent(
                         icon: FontAwesomeIcons.mars,
                         label: 'MALE',),),
-                  ),
           ),
                 Expanded(
-                  child: GestureDetector(
-                    onTap: (){
-                      setState(() {
-                        updateClr(2);
-                      });
-                    },
                       child: InputPageCard(
-                      colour: inactiveContainerClr,
+                        onPress: (){
+                          setState(() {
+                            selectedGender = IconGender.female;
+                          });
+                        },
+                      colour: selectedGender == IconGender.female ? activeContainerClr : inactiveContainerClr,
                       cardChild: IconContent(
                         icon: FontAwesomeIcons.venus,
                         label: 'FEMALE',),),
-                  ),
           ),
               ],),),
           Expanded(
