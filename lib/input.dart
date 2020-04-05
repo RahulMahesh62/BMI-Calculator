@@ -17,6 +17,7 @@ class _InputPageState extends State<InputPage> {
   Color femaleCardClr = kinactiveContainerClr;
 
   IconGender selectedGender;
+  int height=180;
 
   @override
   Widget build(BuildContext context) {
@@ -71,12 +72,29 @@ class _InputPageState extends State<InputPage> {
                       textBaseline: TextBaseline.alphabetic,
                       children: <Widget>[
                       Text(
-                        '180',
+                        height.toString(),
                         style: kTTextStyle,
                       ),
                       Text('cm',
                       style: klabeltextstyle,)
                     ],),
+                    SliderTheme(
+                        data: SliderTheme.of(context).copyWith(
+                          
+                        ),
+                        child: Slider(
+                        value: height.toDouble(),
+                        min: 120.0,
+                        max: 220.0,
+                        activeColor: Color(0xfff53b57),
+                        inactiveColor: Color(0xff485460),
+                        onChanged: (double newVal){
+                          setState(() {
+                            height=newVal.round();
+                          });
+                        }
+                      ),
+                    ),
                 ],)),
           ),
           Expanded(
