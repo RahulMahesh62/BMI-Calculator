@@ -17,7 +17,9 @@ class _InputPageState extends State<InputPage> {
   Color femaleCardClr = kinactiveContainerClr;
 
   IconGender selectedGender;
-  int height=180;
+  int height=170;
+  int weight=55;
+  int age = 30;
 
   @override
   Widget build(BuildContext context) {
@@ -80,14 +82,16 @@ class _InputPageState extends State<InputPage> {
                     ],),
                     SliderTheme(
                         data: SliderTheme.of(context).copyWith(
-                          
+                          thumbShape: RoundSliderThumbShape(enabledThumbRadius: 15.0),
+                          overlayShape: RoundSliderOverlayShape(overlayRadius:30.0),
+                          thumbColor: Colors.pink,
+                          activeTrackColor: Colors.pink,
+                          inactiveTrackColor: Colors.black,
                         ),
                         child: Slider(
                         value: height.toDouble(),
                         min: 120.0,
                         max: 220.0,
-                        activeColor: Color(0xfff53b57),
-                        inactiveColor: Color(0xff485460),
                         onChanged: (double newVal){
                           setState(() {
                             height=newVal.round();
@@ -102,11 +106,88 @@ class _InputPageState extends State<InputPage> {
               children: <Widget>[
                 Expanded(
                   child: InputPageCard(
-                    colour: kactiveContainerClr,),
+                    colour: kactiveContainerClr,
+                    cardChild: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Text(
+                          'Weight',
+                          style: klabeltextstyle,
+                        ),
+                        Text(
+                          weight.toString(),
+                          style: kTTextStyle,
+                          ),
+                          SizedBox(
+                            height: 2.0,),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: <Widget>[
+                            RoundIconn(
+                              icon: FontAwesomeIcons.minus,
+                              onpress: (){
+                                  setState(() {
+                                    weight--;
+                                  });
+                              },
+                              ),
+                            SizedBox(
+                              width: 15.0,
+                              ),
+                            RoundIconn(
+                              icon: FontAwesomeIcons.plus,
+                              onpress: (){
+                                setState(() {
+                                  weight++;
+                                });
+                              },
+                              ),
+                          ],)
+                      ],)
+                    ),
           ),
                 Expanded(
                   child: InputPageCard(
-                    colour: kactiveContainerClr,),
+                    colour: kactiveContainerClr,
+                    cardChild: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Text(
+                          'Age',
+                          style: klabeltextstyle,
+                        ),
+                        Text(
+                          age.toString(),
+                          style: kTTextStyle,
+                          ),
+                          SizedBox(
+                            height: 2.0,),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: <Widget>[
+                            RoundIconn(
+                              icon: FontAwesomeIcons.minus,
+                              onpress: (){
+                                  setState(() {
+                                    age--;
+                                  });
+                              },
+                              ),
+                            SizedBox(
+                              width: 15.0,
+                              ),
+                            RoundIconn(
+                              icon: FontAwesomeIcons.plus,
+                              onpress: (){
+                                setState(() {
+                                  age++;
+                                });
+                              },
+                              ),
+                          ],)
+                      ],)),
           ),
               ],),),
               Container(
@@ -116,6 +197,13 @@ class _InputPageState extends State<InputPage> {
                   borderRadius:BorderRadius.circular(10.0),),
                 width: double.infinity,
                 height: 70.0,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Text('Calculate',
+                    style: TextStyle(
+                      fontSize: 30.0,))
+                  ],)
                 ),
         ],
         ),
@@ -124,3 +212,25 @@ class _InputPageState extends State<InputPage> {
 }
 
 
+class RoundIconn extends StatelessWidget {
+  RoundIconn({this.icon,@required this.onpress});
+  final IconData icon;
+  final Function onpress;
+  @override
+  Widget build(BuildContext context) {
+    return RawMaterialButton(
+      child: Icon(
+        icon,
+        color: Colors.white,
+        ),
+      onPressed: onpress,
+      shape: CircleBorder(),
+      elevation: 0.0,
+      fillColor: Color(0xff218c74),
+      constraints: BoxConstraints.tightFor(
+        width: 56.0,
+        height: 56.0,
+      ),
+    );
+  }
+}
