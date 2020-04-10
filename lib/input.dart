@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'icon_content.dart';
 import 'reusable_card.dart';
 import 'constants.dart';
+import 'result_page.dart';
 
 enum IconGender{male,female,}
 
@@ -152,6 +153,7 @@ class _InputPageState extends State<InputPage> {
                     colour: kactiveContainerClr,
                     cardChild: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: <Widget>[
                         Text(
                           'Age',
@@ -190,21 +192,28 @@ class _InputPageState extends State<InputPage> {
                       ],)),
           ),
               ],),),
-              Container(
-                margin: EdgeInsets.all(15.0),
-                decoration: BoxDecoration(
-                  color: kbottomContainerClr,
-                  borderRadius:BorderRadius.circular(10.0),),
-                width: double.infinity,
-                height: 70.0,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Text('Calculate',
-                    style: TextStyle(
-                      fontSize: 30.0,))
-                  ],)
-                ),
+              GestureDetector(
+                  onTap: (){
+                    Navigator.push(
+                      context, MaterialPageRoute(builder: (context) => ResultsPage()));
+                  },
+                  child: Container(
+                  margin: EdgeInsets.all(15.0),
+                  decoration: BoxDecoration(
+                    color: kbottomContainerClr,
+                    borderRadius:BorderRadius.circular(10.0),),
+                    width: double.infinity,
+                    height: 70.0,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Text('CALCULATE',
+                      style: TextStyle(
+                        fontSize: 30.0,
+                        fontWeight: FontWeight.bold,))
+                    ],)
+                  ),
+              ),
         ],
         ),
     );
