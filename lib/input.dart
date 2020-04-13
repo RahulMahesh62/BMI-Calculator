@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'icon_content.dart';
 import 'reusable_card.dart';
 import 'constants.dart';
+import 'bottombtn.dart';
 import 'result_page.dart';
 
 enum IconGender{male,female,}
@@ -13,14 +14,12 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
-
-  Color maleCardColor = kinactiveContainerClr; 
-  Color femaleCardClr = kinactiveContainerClr;
-
-  IconGender selectedGender;
-  int height=170;
-  int weight=55;
   int age = 30;
+  Color femaleCardClr = kinactiveContainerClr;
+  int height=170;
+  Color maleCardColor = kinactiveContainerClr; 
+  IconGender selectedGender;
+  int weight=55;
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +45,7 @@ class _InputPageState extends State<InputPage> {
                         icon: FontAwesomeIcons.mars,
                         label: 'MALE',),),
           ),
-                Expanded(
+          Expanded(
                       child: InputPageCard(
                         onPress: (){
                           setState(() {
@@ -192,28 +191,10 @@ class _InputPageState extends State<InputPage> {
                       ],)),
           ),
               ],),),
-              GestureDetector(
-                  onTap: (){
-                    Navigator.push(
-                      context, MaterialPageRoute(builder: (context) => ResultsPage()));
-                  },
-                  child: Container(
-                  margin: EdgeInsets.all(15.0),
-                  decoration: BoxDecoration(
-                    color: kbottomContainerClr,
-                    borderRadius:BorderRadius.circular(10.0),),
-                    width: double.infinity,
-                    height: 70.0,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Text('CALCULATE',
-                      style: TextStyle(
-                        fontSize: 30.0,
-                        fontWeight: FontWeight.bold,))
-                    ],)
-                  ),
-              ),
+              BottomButton(buttonTitle: 'CALCULATE',onTap: (){
+          Navigator.push(
+            context, MaterialPageRoute(builder: (context) => ResultsPage()));
+        },),
         ],
         ),
     );
@@ -223,8 +204,10 @@ class _InputPageState extends State<InputPage> {
 
 class RoundIconn extends StatelessWidget {
   RoundIconn({this.icon,@required this.onpress});
+
   final IconData icon;
   final Function onpress;
+
   @override
   Widget build(BuildContext context) {
     return RawMaterialButton(
@@ -243,3 +226,8 @@ class RoundIconn extends StatelessWidget {
     );
   }
 }
+
+/*(){
+          Navigator.push(
+            context, MaterialPageRoute(builder: (context) => ResultsPage()));
+        },*/
