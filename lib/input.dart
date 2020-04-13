@@ -4,6 +4,7 @@ import 'icon_content.dart';
 import 'reusable_card.dart';
 import 'constants.dart';
 import 'bottombtn.dart';
+import 'roundicon.dart';
 import 'result_page.dart';
 
 enum IconGender{male,female,}
@@ -200,34 +201,3 @@ class _InputPageState extends State<InputPage> {
     );
   }
 }
-
-
-class RoundIconn extends StatelessWidget {
-  RoundIconn({this.icon,@required this.onpress});
-
-  final IconData icon;
-  final Function onpress;
-
-  @override
-  Widget build(BuildContext context) {
-    return RawMaterialButton(
-      child: Icon(
-        icon,
-        color: Colors.white,
-        ),
-      onPressed: onpress,
-      shape: CircleBorder(),
-      elevation: 0.0,
-      fillColor: Color(0xff218c74),
-      constraints: BoxConstraints.tightFor(
-        width: 56.0,
-        height: 56.0,
-      ),
-    );
-  }
-}
-
-/*(){
-          Navigator.push(
-            context, MaterialPageRoute(builder: (context) => ResultsPage()));
-        },*/

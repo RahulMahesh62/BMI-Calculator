@@ -11,7 +11,7 @@ class ResultsPage extends StatelessWidget {
       appBar: AppBar(
         title: Center(
           child: 
-          Text('BMI CALCULATORSS'
+          Text('BMI CALCULATOR'
           ),
         ),
       ),
@@ -21,7 +21,8 @@ class ResultsPage extends StatelessWidget {
         children: <Widget>[
           Expanded(
             child: Container(
-              alignment: Alignment.center,
+              alignment: Alignment.bottomCenter,
+              padding: EdgeInsets.all(15.0),
               child: Text('Your Result',
               style: KTitleTextStyle,
               ),
@@ -47,7 +48,12 @@ class ResultsPage extends StatelessWidget {
                     textAlign: TextAlign.center,)
                 ],
               ),),
-            )
+            ),
+            BottomButton(
+              buttonTitle: 'RECALCULATE',
+              onTap: () {
+                Navigator.pop(context);
+              } ,),
         ],
       ),
     );
